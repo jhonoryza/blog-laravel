@@ -11,7 +11,8 @@
         </div>
     </div>
     <script type="text/javascript">
-        const grid = new gridjs.Grid({
+        const { Grid, h } = gridjs;
+        const grid = new Grid({
             sort: {
                 multiColumn: false,
                 server: {
@@ -37,7 +38,19 @@
                     url: (prev, page, limit) => prev.includes("search") || prev.includes("sort") ? `${prev}&page[size]=${limit}&page[number]=${page+1}` : `${prev}?page[size]=${limit}&page[number]=${page+1}`
                 }
             },
-            columns: ['Name', 'Email'],
+            columns: [
+                'Name',
+                'Email',
+                {
+                    name: 'Actions',
+                    formatter: (cell, row) => {
+                        return h('button', {
+                            className: 'py-1 mb-2 px-4 border rounded-md text-white bg-blue-400',
+                            onClick: () => alert(`Editing "${row.cells[0].data}" "${row.cells[1].data}"`)
+                        }, 'Edit');
+                    }
+                },
+            ],
             server: {
                 url: "{{ route('api.users.index') }}",
                 then: data => data.data.map(user => [user.name, user.email]),
