@@ -15,6 +15,7 @@ A php project blog built using framework laravel
 - Redis
 
 # Getting Started
+- copy .env.example to .env
 - edit file docker-compose.yml
 - change ${WWWGROUP} to 1000
 - change ${WWWUSER} to 1000
