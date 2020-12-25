@@ -15,4 +15,13 @@ A php project blog built using framework laravel
 - Redis
 
 # Getting Started
+- edit file docker-compose.yml
+- change ${WWWGROUP} to 1000
+- change ${WWWUSER} to 1000
+- run docker-compose up -d
+- run docker exec -it --user=1000:1000 site composer install
+- run docker-compose down
 - run vendor/bin/sail up -d
+- run vendor/bin/sail artisan key:generate
+- run vendor/bin/sail artisan migrate
+- run vendor/bin/sail artisan db:seed
