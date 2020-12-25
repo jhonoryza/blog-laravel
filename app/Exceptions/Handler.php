@@ -2,11 +2,13 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\Concerns\HandleApiExceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use HandleApiExceptions;
     /**
      * A list of the exception types that are not reported.
      *
@@ -36,5 +38,14 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($request->expectsJson() || \Str::startsWith($request->getRequestUri(), ['/api/', '/cms-api/'])) {
+            return $this->renderApiException($exception);
+        }
+
+        return parent::render($request, $exception);
     }
 }
