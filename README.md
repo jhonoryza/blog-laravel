@@ -8,4 +8,4 @@ A php project blog built using framework laravel using nebula admin panel
 - Redis
 
 # Getting Started
-- run vendor/bin/sail up
+- run vendor/bin/sail up -d
