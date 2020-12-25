@@ -7,6 +7,10 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [{
+        "type": "vcs",
+        "url": "git@gitlab.com:suitmedia/laravel-api-generator.git"
+    }],
     "require": {
         "php": "^7.3|^8.0",
         "diglactic/laravel-breadcrumbs": "^6.0",
@@ -15,7 +19,9 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/breeze": "^1.0",
         "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "spatie/laravel-json-api-paginate": "^1.10",
+        "spatie/laravel-query-builder": "^3.3"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
@@ -23,7 +29,8 @@
         "laravel/sail": "^0.0.5",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+        "richan-fongdasen/laravel-api-generator": "^1.5"
     },
     "config": {
         "optimize-autoloader": true,
